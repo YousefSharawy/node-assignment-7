@@ -18,4 +18,9 @@ async function createExplicitCollection() {
         validationAction: "error"
     });
 }
-module.exports = { createExplicitCollection };
+async function createIndexOnTitle() {
+    return await db.collection("logs").createIndex({
+        title: 1,
+    })
+}
+module.exports = { createExplicitCollection ,createIndexOnTitle};

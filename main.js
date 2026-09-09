@@ -7,7 +7,7 @@ const logsRouter = require("./src/features/logs/logs.route");
 
 app.use('/collection/books',booksRouter);
 app.use('/collection/authors',authorRouter)
-app.use('/collection/logs',logsRouter)
+app.use('/collection/logs',logsRouter) 
 
 app.use((req,res)=>{
     res.status(404).json({message:"Invalid route"});
