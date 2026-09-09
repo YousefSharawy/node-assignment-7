@@ -2,9 +2,10 @@ const express = require("express");
 const app = express();
 app.use(express.json());
 const booksRouter = require("./src/features/books/books.route");
+const authorRouter = require("./src/features/author/author.route");
 
 app.use('/collection/books',booksRouter);
-
+app.use('/collection/authors',authorRouter)
 
 app.use((req,res)=>{
     res.status(404).json({message:"Invalid route"});
