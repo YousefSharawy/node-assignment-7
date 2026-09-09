@@ -1,0 +1,37 @@
+- use mongo-assignment
+1- db.createCollection("books", {
+|   validator: {
+|     $jsonSchema: {
+|       bsonType: "object",
+|       required: ["title"],
+|       properties: {
+|         title: {
+|           bsonType: "string",
+|           minLength: 1,
+|           description: "title is required"
+|         }
+|       }
+|     }
+|   },
+|   validationLevel: "strict",
+|   validationAction: "error"
+| })
+
+2-db.authors.insertOne({name:"author1",nationality:"db.authors"});
+
+3-  db.createCollection("logs",{capped:true,size:1048576})
+
+4-  db.books.createIndex({title:1})
+
+5- db.books.insertOne({title:"book1",author:"Ali",year:1937,genres:["fantasy","adventure"]})
+
+6- mongo-assignment> db.books.insertMany([
+|   { title: "1984", author: "George Orwell", publishedYear: 1949 },
+|   { title: "To Kill a Mockingbird", author: "Harper Lee", publishedYear: 1960 },
+|   { title: "The Great Gatsby", author: "F. Scott Fitzgerald", publishedYear: 1925 }
+| ])
+{
+
+7-db.logs.insertOne({bookId:"6aa18c085fea606b6a6fc553",action:"borrowed"})
+
+8- db.books.updateOne({title:"Future"},{$set:{publishedYear:2022}})
