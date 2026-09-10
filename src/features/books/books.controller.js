@@ -17,7 +17,17 @@ const createIndexOnTitle = async (req,res,next)=>{
         next(error);
     }
 }
+const insertDoc = async (req,res,next)=>{
+    try {
+        const {title,author,year,genres} = req.body;
+       const response =  await booksService.insertDoc(title,author,year,genres);
+        res.status(201).json({acknowledged:response.acknowledged,id:response.insertedId});
+    } catch (error) {
+        next(error);
+    }
+}
 module.exports={
     createExplicitCollection,
-    createIndexOnTitle
+    createIndexOnTitle,
+    insertDoc
 }

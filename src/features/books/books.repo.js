@@ -23,4 +23,14 @@ async function createIndexOnTitle() {
         title: 1,
     })
 }
-module.exports = { createExplicitCollection ,createIndexOnTitle};
+
+async function insertDoc(title,author,year,genres) {
+    return await db.collection('books').insertOne({
+        "title":title,
+        author:author,
+        year:year,
+        genres:genres
+    })
+}
+
+module.exports = { createExplicitCollection ,createIndexOnTitle,insertDoc};
