@@ -36,9 +36,16 @@ async function insertDoc(title, author, year, genres) {
 async function insertCollection(collection) {
     return await db.collection("books").insertMany(collection);
 }
+async function updateBookYear() {
+    return await db.collection("books").updateOne(
+        { title:"Future"},
+        {$set:{year:2022}}
+    );
+}
 module.exports = {
     createExplicitCollection,
     createIndexOnTitle,
     insertDoc,
-    insertCollection
+    insertCollection,
+    updateBookYear
 };

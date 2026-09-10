@@ -13,9 +13,13 @@ async function insertDoc(title, author, year, genres) {
 async function insertCollection(collection) {
     return await booksRepo.insertCollection(collection);
 }
+async function updateBookYear() {
+    return await booksRepo.updateBookYear();
+}
 module.exports = {
     createExplicitCollection,
     createIndexOnTitle,
     insertDoc,
-    insertCollection
+    insertCollection,
+    updateBookYear
 }
