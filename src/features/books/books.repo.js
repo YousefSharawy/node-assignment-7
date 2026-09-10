@@ -38,14 +38,28 @@ async function insertCollection(collection) {
 }
 async function updateBookYear() {
     return await db.collection("books").updateOne(
-        { title:"Future"},
-        {$set:{year:2022}}
+        { title: "Future" },
+        { $set: { year: 2022 } }
     );
 }
+
+async function getBookByTitle(title) {
+    return await db.collection("books").findOne(
+        { title: title }
+    );
+}
+async function getBooksByYear(from,to) {
+    return await db.collection("books").find(
+        {year:{$gte:from,$lte:to}}
+    ).toArray();
+}
+
 module.exports = {
     createExplicitCollection,
     createIndexOnTitle,
     insertDoc,
     insertCollection,
-    updateBookYear
+    updateBookYear,
+    getBookByTitle,
+    getBooksByYear
 };

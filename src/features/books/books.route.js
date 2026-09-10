@@ -7,6 +7,8 @@ booksRouter.post('/index', booksController.createIndexOnTitle)
 booksRouter.post('', booksController.insertDoc)
 booksRouter.post('/batch', booksController.insertCollection)
 booksRouter.patch('/Future',booksController.updateBookYear);
+booksRouter.get('/title',booksController.getBookByTitle);
+booksRouter.get('/year',booksController.getBooksByYear);
 
 
 module.exports = booksRouter;

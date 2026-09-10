@@ -43,10 +43,31 @@ const updateBookYear = async (req, res, next) => {
         next(error);
     }
 }
+const getBookByTitle = async (req, res, next) => {
+    try {
+        const title = req.query.title
+        const response = await booksService.getBookByTitle(title);
+        res.status(201).json({ response });
+    } catch (error) {
+        next(error);
+    }
+}
+const getBooksByYear = async (req, res, next) => {
+    try {
+        const from = Number(req.query.from);
+        const to = Number(req.query.to);
+        const response = await booksService.getBooksByYear(from, to);
+        res.status(201).json({ response });
+    } catch (error) {
+        next(error);
+    }
+}
 module.exports = {
     createExplicitCollection,
     createIndexOnTitle,
     insertDoc,
     insertCollection,
-    updateBookYear
+    updateBookYear,
+    getBookByTitle,
+    getBooksByYear
 }
