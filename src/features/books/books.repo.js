@@ -24,13 +24,21 @@ async function createIndexOnTitle() {
     })
 }
 
-async function insertDoc(title,author,year,genres) {
+async function insertDoc(title, author, year, genres) {
     return await db.collection('books').insertOne({
-        "title":title,
-        author:author,
-        year:year,
-        genres:genres
+        "title": title,
+        author: author,
+        year: year,
+        genres: genres
     })
 }
 
-module.exports = { createExplicitCollection ,createIndexOnTitle,insertDoc};
+async function insertCollection(collection) {
+    return await db.collection("books").insertMany(collection);
+}
+module.exports = {
+    createExplicitCollection,
+    createIndexOnTitle,
+    insertDoc,
+    insertCollection
+};

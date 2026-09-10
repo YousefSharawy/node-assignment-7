@@ -10,8 +10,12 @@ async function createIndexOnTitle() {
 async function insertDoc(title, author, year, genres) {
     return await booksRepo.insertDoc(title, author, year, genres);
 }
+async function insertCollection(collection) {
+    return await booksRepo.insertCollection(collection);
+}
 module.exports = {
     createExplicitCollection,
     createIndexOnTitle,
-    insertDoc
+    insertDoc,
+    insertCollection
 }
