@@ -35,3 +35,178 @@
 7-db.logs.insertOne({bookId:"6aa18c085fea606b6a6fc553",action:"borrowed"})
 
 8- db.books.updateOne({title:"Future"},{$set:{publishedYear:2022}})
+
+9- db.books.findOne({ title: "The Great Gatsby" })
+{
+  _id: ObjectId('6aa18c085fea606b6a6fc555'),
+  title: 'The Great Gatsby',
+  author: 'F. Scott Fitzgerald',
+  publishedYear: 1925
+}
+
+10-db.books.find({publishYear:{$gte:1990,$lte:2010}})
+
+11-db.books.find({genres:"adventure"})
+[
+  {
+    _id: ObjectId('6aa18bad5fea606b6a6fc551'),
+    title: 'book1',
+    author: 'Ali',
+    year: 1937,
+    genres: [ 'fantasy', 'adventure' ]
+  }
+]
+
+12- db.books.find().sort({year:-1}).skip(2).limit(3)
+[
+  {
+    _id: ObjectId('6aa18c085fea606b6a6fc554'),
+    title: 'To Kill a Mockingbird',
+    author: 'Harper Lee',
+    publishedYear: 1960
+  },
+  {
+    _id: ObjectId('6aa18c085fea606b6a6fc555'),
+    title: 'The Great Gatsby',
+    author: 'F. Scott Fitzgerald',
+    publishedYear: 1925
+  }
+]
+
+13- db.books.find({year:{$type:"int"}})
+[
+  {
+    _id: ObjectId('6aa18bad5fea606b6a6fc551'),
+    title: 'book1',
+    author: 'Ali',
+    year: 1937,
+    genres: [ 'fantasy', 'adventure' ]
+  }
+]
+
+14- db.books.find({genres:{$nin:["Horror","Science Fiction"]}})
+[
+  {
+    _id: ObjectId('6aa18bad5fea606b6a6fc551'),
+    title: 'book1',
+    author: 'Ali',
+    year: 1937,
+    genres: [ 'fantasy', 'adventure' ]
+  },
+  {
+    _id: ObjectId('6aa18c085fea606b6a6fc553'),
+    title: '1984',
+    author: 'George Orwell',
+    publishedYear: 1949
+  },
+  {
+    _id: ObjectId('6aa18c085fea606b6a6fc554'),
+    title: 'To Kill a Mockingbird',
+    author: 'Harper Lee',
+    publishedYear: 1960
+  },
+  {
+    _id: ObjectId('6aa18c085fea606b6a6fc555'),
+    title: 'The Great Gatsby',
+    author: 'F. Scott Fitzgerald',
+    publishedYear: 1925
+  }
+]
+
+15- db.books.deleteMany({year:{$lt:2000}})
+{ acknowledged: true, deletedCount: 1 }
+
+16-  db.books.aggregate([{$match:{year:{$gt:2000}}},{$sort:{year:-1}}])
+
+17- db.books.aggregate([{$match:{year:{$gt:2000}}},{$project:{_id:0,title:1,author:1,year:1}}])
+
+18-  db.books.aggregate([{$unwind:"$genres"}])
+
+19-  db.books.aggregate([ { $lookup: { from: "logs", localField: "_id", foreignField: "bookId", as: "logs" } }] )
+[
+  {
+    _id: ObjectId('6aa18c085fea606b6a6fc553'),
+    title: '1984',
+    author: 'George Orwell',
+    publishedYear: 1949,
+    logs: []
+  },
+  {
+    _id: ObjectId('6aa18c085fea606b6a6fc554'),
+    title: 'To Kill a Mockingbird',
+    author: 'Harper Lee',
+    publishedYear: 1960,
+    logs: []
+  },
+  {
+    _id: ObjectId('6aa18c085fea606b6a6fc555'),
+    title: 'The Great Gatsby',
+    author: 'F. Scott Fitzgerald',
+    publishedYear: 1925,
+    logs: []
+  }
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
