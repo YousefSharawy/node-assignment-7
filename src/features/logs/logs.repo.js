@@ -5,6 +5,10 @@ async function createCappedCollection() {
         size: 1048576,
     });
 }
+async function insertNewLog(log) {
+    return await db.collection("logs").insertOne(log);
+}
 module.exports = {
     createCappedCollection,
+    insertNewLog
 }
