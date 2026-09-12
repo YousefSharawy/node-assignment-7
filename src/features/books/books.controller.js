@@ -112,9 +112,25 @@ const aggregateOne = async (req, res, next) => {
         next(error);
     }
 }
-const aggregateTWo = async (req, res, next) => {
+const aggregateTwo = async (req, res, next) => {
     try {
-        const response = await booksService.aggregateTWo();
+        const response = await booksService.aggregateTwo();
+        res.status(200).json({ response });
+    } catch (error) {
+        next(error);
+    }
+}
+const aggregateThree = async (req, res, next) => {
+    try {
+        const response = await booksService.aggregateThree();
+        res.status(200).json({ response });
+    } catch (error) {
+        next(error);
+    }
+}
+const aggregateFour = async (req, res, next) => {
+    try {
+        const response = await booksService.aggregateFour();
         res.status(200).json({ response });
     } catch (error) {
         next(error);
@@ -134,5 +150,7 @@ module.exports = {
     getBooksExcludeingGenres,
     deleteBooksBeforeYear,
     aggregateOne,
-    aggregateTWo
+    aggregateTwo,
+    aggregateThree,
+    aggregateFour
 }

@@ -83,10 +83,31 @@ async function aggregateOne() {
         { $sort: { year: -1 } }]
     ).toArray();
 }
-async function aggregateTWo() {
+async function aggregateTwo() {
     return await db.collection("books").aggregate(
         [{ $match: { year: { $gt: 2000 } } },
-        { $project: { _id:0,title: 1, author: 1, year: 1 } }
+        { $project: { _id: 0, title: 1, author: 1, year: 1 } }
+        ]
+    ).toArray();
+}
+async function aggregateThree() {
+    return await db.collection("books").aggregate(
+        [
+            { $unwind: "$genres" }
+        ]
+    ).toArray();
+}
+async function aggregateFour() {
+    return await db.collection("books").aggregate(
+        [
+            {
+                $lookup: {
+                    from: "logs",
+                    localField: "_id",
+                    foreignField: "bookId",
+                    as: "logs"
+                }
+            }
         ]
     ).toArray();
 }
@@ -105,5 +126,7 @@ module.exports = {
     getBooksExcludeingGenres,
     deleteBooksBeforeYear,
     aggregateOne,
-    aggregateTWo
+    aggregateTwo,
+    aggregateThree,
+    aggregateFour
 };
