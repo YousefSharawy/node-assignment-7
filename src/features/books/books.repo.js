@@ -67,6 +67,12 @@ async function getBooksByIntegerYear() {
     ).toArray();
 }
 
+async function getBooksExcludeingGenres() {
+    return await db.collection("books").find(
+        { genres: { $nin: ["Horror","Science Fiction"] } }
+    ).toArray();
+}
+
 module.exports = {
     createExplicitCollection,
     createIndexOnTitle,
@@ -77,5 +83,6 @@ module.exports = {
     getBooksByYear,
     getBooksByGenre,
     getFirstTwoBooks,
-    getBooksByIntegerYear
+    getBooksByIntegerYear,
+    getBooksExcludeingGenres
 };
