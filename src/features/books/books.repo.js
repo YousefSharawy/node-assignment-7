@@ -48,9 +48,14 @@ async function getBookByTitle(title) {
         { title: title }
     );
 }
-async function getBooksByYear(from,to) {
+async function getBooksByYear(from, to) {
     return await db.collection("books").find(
-        {year:{$gte:from,$lte:to}}
+        { year: { $gte: from, $lte: to } }
+    ).toArray();
+}
+async function getBooksByGenre(genre) {
+    return await db.collection("books").find(
+        { genres: genre }
     ).toArray();
 }
 
@@ -61,5 +66,6 @@ module.exports = {
     insertCollection,
     updateBookYear,
     getBookByTitle,
-    getBooksByYear
+    getBooksByYear,
+    getBooksByGenre
 };

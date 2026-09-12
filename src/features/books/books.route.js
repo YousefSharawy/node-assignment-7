@@ -9,6 +9,7 @@ booksRouter.post('/batch', booksController.insertCollection)
 booksRouter.patch('/Future',booksController.updateBookYear);
 booksRouter.get('/title',booksController.getBookByTitle);
 booksRouter.get('/year',booksController.getBooksByYear);
+booksRouter.get('/genre',booksController.getBooksByGenre);
 
 
 module.exports = booksRouter;

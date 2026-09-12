@@ -22,6 +22,9 @@ async function getBookByTitle(title) {
 async function getBooksByYear(from,to) {
     return await booksRepo.getBooksByYear(from,to);
 }
+async function getBooksByGenre(genre) {
+    return await booksRepo.getBooksByGenre(genre);
+}
 module.exports = {
     createExplicitCollection,
     createIndexOnTitle,
@@ -29,5 +32,6 @@ module.exports = {
     insertCollection,
     updateBookYear,
     getBookByTitle,
-    getBooksByYear
+    getBooksByYear,
+    getBooksByGenre
 }
