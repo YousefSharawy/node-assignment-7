@@ -104,6 +104,14 @@ const deleteBooksBeforeYear = async (req, res, next) => {
         next(error);
     }
 }
+const aggregateOne = async (req, res, next) => {
+    try {
+        const response = await booksService.aggregateOne();
+        res.status(200).json({ response });
+    } catch (error) {
+        next(error);
+    }
+}
 module.exports = {
     createExplicitCollection,
     createIndexOnTitle,
@@ -116,5 +124,6 @@ module.exports = {
     getFirstTwoBooks,
     getBooksByIntegerYear,
     getBooksExcludeingGenres,
-    deleteBooksBeforeYear
+    deleteBooksBeforeYear,
+    aggregateOne
 }

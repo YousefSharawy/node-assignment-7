@@ -77,6 +77,12 @@ async function deleteBooksBeforeYear(year) {
         { year: { $lte: year } },
     );
 }
+async function aggregateOne() {
+    return await db.collection("books").aggregate(
+        [{ $match: { year: { $gt: 2000 } } },
+        { $sort: { year: -1 } }]
+    ).toArray();
+}
 
 module.exports = {
     createExplicitCollection,
@@ -90,5 +96,6 @@ module.exports = {
     getFirstTwoBooks,
     getBooksByIntegerYear,
     getBooksExcludeingGenres,
-    deleteBooksBeforeYear
+    deleteBooksBeforeYear,
+    aggregateOne
 };
