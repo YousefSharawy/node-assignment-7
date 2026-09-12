@@ -15,6 +15,7 @@ booksRouter.get('/year-integer',booksController.getBooksByIntegerYear);
 booksRouter.get('/exclude-genres',booksController.getBooksExcludeingGenres);
 booksRouter.delete('/before-year',booksController.deleteBooksBeforeYear);
 booksRouter.get('/aggregate1',booksController.aggregateOne);
+booksRouter.get('/aggregate2',booksController.aggregateTWo);
 
 
 module.exports = booksRouter;

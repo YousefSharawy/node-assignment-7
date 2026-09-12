@@ -83,6 +83,13 @@ async function aggregateOne() {
         { $sort: { year: -1 } }]
     ).toArray();
 }
+async function aggregateTWo() {
+    return await db.collection("books").aggregate(
+        [{ $match: { year: { $gt: 2000 } } },
+        { $project: { _id:0,title: 1, author: 1, year: 1 } }
+        ]
+    ).toArray();
+}
 
 module.exports = {
     createExplicitCollection,
@@ -97,5 +104,6 @@ module.exports = {
     getBooksByIntegerYear,
     getBooksExcludeingGenres,
     deleteBooksBeforeYear,
-    aggregateOne
+    aggregateOne,
+    aggregateTWo
 };

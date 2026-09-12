@@ -40,6 +40,9 @@ async function deleteBooksBeforeYear(year) {
 async function aggregateOne() {
     return await booksRepo.aggregateOne();
 }
+async function aggregateTWo() {
+    return await booksRepo.aggregateTWo();
+}
 module.exports = {
     createExplicitCollection,
     createIndexOnTitle,
@@ -53,5 +56,6 @@ module.exports = {
     getBooksByIntegerYear,
     getBooksExcludeingGenres,
     deleteBooksBeforeYear,
-    aggregateOne
+    aggregateOne,
+    aggregateTWo
 }
