@@ -59,7 +59,12 @@ async function getBooksByGenre(genre) {
     ).toArray();
 }
 async function getFirstTwoBooks() {
-    return await db.collection("books").find().sort({year:-1}).skip(2).limit(3).toArray();
+    return await db.collection("books").find().sort({ year: -1 }).skip(2).limit(3).toArray();
+}
+async function getBooksByIntegerYear() {
+    return await db.collection("books").find(
+        { year: { $type: "int" } }
+    ).toArray();
 }
 
 module.exports = {
@@ -71,5 +76,6 @@ module.exports = {
     getBookByTitle,
     getBooksByYear,
     getBooksByGenre,
-    getFirstTwoBooks
+    getFirstTwoBooks,
+    getBooksByIntegerYear
 };

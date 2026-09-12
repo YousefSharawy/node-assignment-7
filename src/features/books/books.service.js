@@ -19,14 +19,17 @@ async function updateBookYear() {
 async function getBookByTitle(title) {
     return await booksRepo.getBookByTitle(title);
 }
-async function getBooksByYear(from,to) {
-    return await booksRepo.getBooksByYear(from,to);
+async function getBooksByYear(from, to) {
+    return await booksRepo.getBooksByYear(from, to);
 }
 async function getBooksByGenre(genre) {
     return await booksRepo.getBooksByGenre(genre);
 }
-async function getFirstTwoBooks(genre) {
+async function getFirstTwoBooks() {
     return await booksRepo.getFirstTwoBooks();
+}
+async function getBooksByIntegerYear() {
+    return await booksRepo.getBooksByIntegerYear();
 }
 module.exports = {
     createExplicitCollection,
@@ -37,5 +40,6 @@ module.exports = {
     getBookByTitle,
     getBooksByYear,
     getBooksByGenre,
-    getFirstTwoBooks
+    getFirstTwoBooks,
+    getBooksByIntegerYear
 }
