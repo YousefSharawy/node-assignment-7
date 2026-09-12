@@ -34,6 +34,9 @@ async function getBooksByIntegerYear() {
 async function getBooksExcludeingGenres() {
     return await booksRepo.getBooksExcludeingGenres();
 }
+async function deleteBooksBeforeYear(year) {
+    return await booksRepo.deleteBooksBeforeYear(year);
+}
 module.exports = {
     createExplicitCollection,
     createIndexOnTitle,
@@ -45,5 +48,6 @@ module.exports = {
     getBooksByGenre,
     getFirstTwoBooks,
     getBooksByIntegerYear,
-    getBooksExcludeingGenres
+    getBooksExcludeingGenres,
+    deleteBooksBeforeYear
 }

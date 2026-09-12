@@ -95,6 +95,15 @@ const getBooksExcludeingGenres = async (req, res, next) => {
         next(error);
     }
 }
+const deleteBooksBeforeYear = async (req, res, next) => {
+    try {
+        const year = Number(req.query.year);
+        const response = await booksService.deleteBooksBeforeYear(year);
+        res.status(200).json({ response });
+    } catch (error) {
+        next(error);
+    }
+}
 module.exports = {
     createExplicitCollection,
     createIndexOnTitle,
@@ -106,5 +115,6 @@ module.exports = {
     getBooksByGenre,
     getFirstTwoBooks,
     getBooksByIntegerYear,
-    getBooksExcludeingGenres
+    getBooksExcludeingGenres,
+    deleteBooksBeforeYear
 }

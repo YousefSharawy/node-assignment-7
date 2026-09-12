@@ -13,6 +13,7 @@ booksRouter.get('/genre',booksController.getBooksByGenre);
 booksRouter.get('/skip-limit',booksController.getFirstTwoBooks);
 booksRouter.get('/year-integer',booksController.getBooksByIntegerYear);
 booksRouter.get('/exclude-genres',booksController.getBooksExcludeingGenres);
+booksRouter.delete('/before-year',booksController.deleteBooksBeforeYear);
 
 
 module.exports = booksRouter;
