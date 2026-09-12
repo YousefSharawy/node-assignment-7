@@ -58,6 +58,9 @@ async function getBooksByGenre(genre) {
         { genres: genre }
     ).toArray();
 }
+async function getFirstTwoBooks() {
+    return await db.collection("books").find().sort({year:-1}).skip(2).limit(3).toArray();
+}
 
 module.exports = {
     createExplicitCollection,
@@ -67,5 +70,6 @@ module.exports = {
     updateBookYear,
     getBookByTitle,
     getBooksByYear,
-    getBooksByGenre
+    getBooksByGenre,
+    getFirstTwoBooks
 };
